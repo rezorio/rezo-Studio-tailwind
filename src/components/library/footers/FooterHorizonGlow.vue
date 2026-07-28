@@ -21,7 +21,7 @@ const links = [
     />
 
     <div
-      class="relative bg-[linear-gradient(180deg,#eef5f2_0%,#f7fbfa_38%,#ffffff_100%)] px-6 py-12 sm:px-8 sm:py-14"
+      class="relative bg-[linear-gradient(180deg,#eef5f2_0%,#f7fbfa_38%,#ffffff_100%)] px-4 py-12 sm:px-8 sm:py-14"
     >
       <!-- Echo texture -->
       <p

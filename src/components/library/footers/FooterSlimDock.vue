@@ -17,9 +17,9 @@ const links = [
       aria-hidden="true"
     />
 
-    <div class="bg-studio-50 px-6 py-6 sm:px-8 sm:py-8">
+    <div class="bg-studio-50 px-4 py-6 sm:px-8 sm:py-8">
       <div
-        class="mx-auto flex max-w-md items-center justify-between gap-4 rounded-full border border-studio-200/80 bg-white/90 px-4 py-2.5 shadow-[0_1px_3px_rgba(20,31,28,0.04)] backdrop-blur-sm sm:px-5 sm:py-3"
+        class="mx-auto flex max-w-md flex-col items-center gap-3 rounded-2xl border border-studio-200/80 bg-white/90 px-4 py-3 shadow-[0_1px_3px_rgba(20,31,28,0.04)] backdrop-blur-sm sm:flex-row sm:justify-between sm:gap-4 sm:rounded-full sm:px-5 sm:py-3"
       >
         <a href="#" class="inline-flex shrink-0 items-center no-underline" @click.prevent>
           <img
@@ -31,9 +31,10 @@ const links = [
           />
         </a>
 
-        <span class="text-studio-300" aria-hidden="true">·</span>
-
-        <nav class="flex items-center gap-3" aria-label="Footer">
+        <nav
+          class="flex flex-wrap items-center justify-center gap-x-4 gap-y-1"
+          aria-label="Footer"
+        >
           <a
             v-for="link in links"
             :key="link.label"
@@ -44,8 +45,6 @@ const links = [
             {{ link.label }}
           </a>
         </nav>
-
-        <span class="text-studio-300" aria-hidden="true">·</span>
 
         <p class="shrink-0 text-[11px] tabular-nums text-studio-400">
           © {{ new Date().getFullYear() }}

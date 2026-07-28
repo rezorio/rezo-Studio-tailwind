@@ -38,15 +38,17 @@ const { slotCount, isEmpty, clearSlots } = usePageCanvas()
     </header>
 
     <div
-      class="flex flex-col gap-4 lg:grid lg:grid-cols-[17.5rem_minmax(0,1fr)] lg:items-start lg:gap-6"
+      class="flex min-w-0 flex-col gap-4 lg:grid lg:grid-cols-[17.5rem_minmax(0,1fr)] lg:items-start lg:gap-6"
     >
       <aside
-        class="flex max-h-[min(24rem,70dvh)] flex-col overflow-hidden rounded-xl border border-studio-200/90 bg-surface/80 lg:sticky lg:top-4 lg:max-h-[calc(100dvh-6.5rem)]"
+        class="flex max-h-[min(70dvh,36rem)] min-h-0 flex-col overflow-hidden rounded-xl border border-studio-200/90 bg-surface/80 lg:sticky lg:top-4 lg:max-h-[calc(100dvh-6.5rem)]"
       >
         <ComponentPalette />
       </aside>
 
-      <PageCanvas />
+      <div class="min-w-0">
+        <PageCanvas />
+      </div>
     </div>
   </div>
 </template>

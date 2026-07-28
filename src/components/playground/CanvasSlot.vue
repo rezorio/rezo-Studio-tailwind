@@ -42,15 +42,15 @@ const canMoveDown = computed(() => props.index < props.total - 1)
   <div class="group/slot relative">
     <!-- Hover chrome: label + reorder / remove -->
     <div
-      class="pointer-events-none absolute inset-x-0 top-0 z-20 flex items-center justify-between gap-2 px-3 py-2 opacity-0 transition group-hover/slot:pointer-events-auto group-hover/slot:opacity-100 group-focus-within/slot:pointer-events-auto group-focus-within/slot:opacity-100"
+      class="pointer-events-auto absolute inset-x-0 top-0 z-20 flex items-start justify-between gap-1.5 px-2 py-2 opacity-100 transition lg:pointer-events-none lg:opacity-0 lg:group-hover/slot:pointer-events-auto lg:group-hover/slot:opacity-100 lg:group-focus-within/slot:pointer-events-auto lg:group-focus-within/slot:opacity-100 sm:items-center sm:gap-2 sm:px-3"
     >
       <div
-        class="inline-flex max-w-[70%] items-center gap-2 rounded-lg border border-studio-200/90 bg-white/95 px-2.5 py-1 shadow-sm backdrop-blur-sm"
+        class="inline-flex min-w-0 max-w-[55%] items-center gap-1.5 rounded-lg border border-studio-200/90 bg-white/95 px-2 py-1 shadow-sm backdrop-blur-sm sm:max-w-[70%] sm:gap-2 sm:px-2.5"
       >
         <span class="font-mono text-[10px] tabular-nums text-studio-400">
           {{ String(index + 1).padStart(2, '0') }}
         </span>
-        <span class="truncate text-xs font-medium text-studio-800">
+        <span class="truncate text-[11px] font-medium text-studio-800 sm:text-xs">
           {{ meta?.name ?? item.componentId }}
         </span>
         <span class="hidden truncate text-[10px] text-studio-400 sm:inline">
@@ -59,7 +59,7 @@ const canMoveDown = computed(() => props.index < props.total - 1)
       </div>
 
       <div
-        class="inline-flex items-center gap-0.5 rounded-lg border border-studio-200/90 bg-white/95 p-0.5 shadow-sm backdrop-blur-sm"
+        class="inline-flex shrink-0 items-center gap-0.5 rounded-lg border border-studio-200/90 bg-white/95 p-0.5 shadow-sm backdrop-blur-sm"
       >
         <button
           type="button"

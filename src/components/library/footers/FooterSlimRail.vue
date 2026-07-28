@@ -15,7 +15,7 @@ const links = [
   <footer class="-mx-6 -my-6 sm:-mx-8 sm:-my-8">
     <div class="h-20 bg-white sm:h-24" aria-hidden="true" />
 
-    <div class="border-t border-studio-200/90 bg-white px-6 py-4 sm:px-8 sm:py-5">
+    <div class="border-t border-studio-200/90 bg-white px-4 py-4 sm:px-8 sm:py-5">
       <div
         class="mx-auto flex max-w-4xl flex-col items-center gap-3 text-center sm:flex-row sm:justify-between sm:gap-4 sm:text-left"
       >

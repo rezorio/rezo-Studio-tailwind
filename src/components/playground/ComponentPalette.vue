@@ -1,14 +1,23 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { nextTick, ref } from 'vue'
 import { getPlaygroundCategories } from '@/registry/playground'
 import { usePageCanvas } from '@/composables/usePageCanvas'
 
 const { addComponent } = usePageCanvas()
 const categories = getPlaygroundCategories()
 const openCategoryId = ref('')
+const categoryRefs = ref<Record<string, HTMLElement | null>>({})
 
-function toggleCategory(id: string): void {
-  openCategoryId.value = openCategoryId.value === id ? '' : id
+function setCategoryRef(id: string, el: unknown): void {
+  categoryRefs.value[id] = el instanceof HTMLElement ? el : null
+}
+
+async function toggleCategory(id: string): Promise<void> {
+  const next = openCategoryId.value === id ? '' : id
+  openCategoryId.value = next
+  if (!next) return
+  await nextTick()
+  categoryRefs.value[next]?.scrollIntoView({ block: 'nearest', behavior: 'smooth' })
 }
 
 function onAdd(categoryId: string, componentId: string): void {
@@ -17,7 +26,7 @@ function onAdd(categoryId: string, componentId: string): void {
 </script>
 
 <template>
-  <div class="flex h-full flex-col">
+  <div class="flex h-full min-h-0 flex-col">
     <header class="shrink-0 border-b border-studio-200/80 px-4 py-3">
       <p class="text-[11px] font-semibold tracking-wider text-studio-400 uppercase">
         Sections
@@ -27,10 +36,11 @@ function onAdd(categoryId: string, componentId: string): void {
       </p>
     </header>
 
-    <div class="flex-1 overflow-y-auto px-2 py-2">
+    <div class="min-h-0 flex-1 overflow-y-auto overscroll-contain px-2 py-2">
       <div
         v-for="category in categories"
         :key="category.id"
+        :ref="(el) => setCategoryRef(category.id, el)"
         class="mb-1"
       >
         <button
@@ -92,7 +102,7 @@ function onAdd(categoryId: string, componentId: string): void {
                 <span class="block text-sm font-medium text-studio-900 group-hover:text-accent">
                   {{ item.name }}
                 </span>
-                <span class="mt-0.5 block truncate text-[11px] text-studio-500">
+                <span class="mt-0.5 block line-clamp-2 text-[11px] leading-snug text-studio-500 sm:truncate sm:leading-normal">
                   {{ item.description }}
                 </span>
               </span>

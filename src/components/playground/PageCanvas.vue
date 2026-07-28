@@ -17,11 +17,11 @@ function slotLayerClass(categoryId: string): string {
 
 <template>
   <div
-    class="relative min-h-[28rem] overflow-x-clip rounded-xl border border-studio-200/90 bg-white shadow-[0_8px_32px_rgba(20,31,28,0.06)]"
+    class="relative min-h-[22rem] min-w-0 overflow-x-clip rounded-xl border border-studio-200/90 bg-white shadow-[0_8px_32px_rgba(20,31,28,0.06)] sm:min-h-[28rem]"
   >
     <div
       v-if="isEmpty"
-      class="flex min-h-[28rem] flex-col items-center justify-center gap-3 px-6 py-16 text-center"
+      class="flex min-h-[22rem] flex-col items-center justify-center gap-3 px-4 py-12 text-center sm:min-h-[28rem] sm:px-6 sm:py-16"
     >
       <div
         class="flex size-12 items-center justify-center rounded-2xl border border-dashed border-studio-300 bg-studio-50 text-studio-400"
@@ -47,7 +47,7 @@ function slotLayerClass(categoryId: string): string {
     </div>
 
     <!-- Match catalog PreviewPanel padding so TemplatePageShell breakout works -->
-    <div v-else class="p-6 sm:p-8">
+    <div v-else class="min-w-0 p-6 sm:p-8">
       <TemplatePageShell>
         <div
           v-for="(slot, index) in slots"

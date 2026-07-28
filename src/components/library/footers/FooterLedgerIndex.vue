@@ -37,11 +37,11 @@ const columns = [
     <!-- Page stub -->
     <div class="h-24 bg-white sm:h-28" aria-hidden="true" />
 
-    <div class="border-t border-studio-200/90 bg-white px-6 py-12 sm:px-8 sm:py-14">
+    <div class="border-t border-studio-200/90 bg-white px-4 py-12 sm:px-8 sm:py-14">
       <div class="mx-auto max-w-4xl">
-        <div class="grid gap-10 sm:grid-cols-[1.1fr_1fr_1fr_1fr] sm:gap-8">
+        <div class="grid gap-8 sm:grid-cols-2 sm:gap-8 lg:grid-cols-[1.1fr_1fr_1fr_1fr]">
           <!-- Brand column -->
-          <div class="sm:pr-4">
+          <div class="sm:col-span-2 lg:col-span-1 lg:pr-4">
             <a href="#" class="inline-flex no-underline" @click.prevent>
               <img
                 :src="brandLogo"

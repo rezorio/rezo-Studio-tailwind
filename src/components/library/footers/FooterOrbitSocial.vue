@@ -31,22 +31,23 @@ const links = [
   { label: 'Contact', href: '#' },
 ]
 
+/** Keep nodes inside the orbit on narrow screens (no half-outside translates). */
 const orbitPositionClass: Record<string, string> = {
   top: 'left-1/2 top-0 -translate-x-1/2 -translate-y-1/2',
-  left: 'left-0 top-1/2 -translate-x-1/2 -translate-y-1/2',
-  right: 'right-0 top-1/2 translate-x-1/2 -translate-y-1/2',
+  left: 'left-0 top-1/2 -translate-y-1/2',
+  right: 'right-0 top-1/2 -translate-y-1/2',
 }
 </script>
 
 <template>
-  <footer class="relative -mx-6 -my-6 overflow-hidden sm:-mx-8 sm:-my-8">
+  <footer class="relative -mx-6 -my-6 overflow-x-clip sm:-mx-8 sm:-my-8">
     <!-- Page stub -->
     <div
       class="h-24 bg-[linear-gradient(180deg,#ffffff_0%,#f0f5f3_100%)] sm:h-28"
       aria-hidden="true"
     />
 
-    <div class="relative bg-studio-950 px-6 py-14 text-white sm:px-8 sm:py-16">
+    <div class="relative bg-studio-950 px-4 py-14 text-white sm:px-8 sm:py-16">
       <!-- Soft top curve -->
       <div
         class="pointer-events-none absolute inset-x-0 -top-px h-8 bg-[radial-gradient(ellipse_80%_100%_at_50%_0%,#f0f5f3,transparent_70%)]"
