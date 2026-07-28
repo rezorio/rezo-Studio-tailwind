@@ -1,0 +1,261 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-display: 'Sora', sans-serif;
+  --font-sans: 'Source Sans 3', sans-serif;
+
+  /* Shared shell chrome — sidebar brand strip + app header */
+  --spacing-shell-header: 4rem;
+
+  /* Light (default) — soft teal catalog */
+  --color-studio-50: #f4f7f6;
+  --color-studio-100: #e4ece9;
+  --color-studio-200: #c8d9d3;
+  --color-studio-300: #9fbbb2;
+  --color-studio-400: #6f978c;
+  --color-studio-500: #527a70;
+  --color-studio-600: #3f6159;
+  --color-studio-700: #354e48;
+  --color-studio-800: #2d403c;
+  --color-studio-900: #283733;
+  --color-studio-950: #141f1c;
+
+  --color-accent: #1a7a66;
+  --color-accent-hover: #156556;
+  --color-accent-muted: #d8efe8;
+
+  --color-surface: #ffffff;
+  --color-surface-elevated: #ffffff;
+}
+
+/* Dark — black / charcoal shell with brighter teal accent */
+[data-theme='dark'] {
+  --color-studio-50: #09090b;
+  --color-studio-100: #121214;
+  --color-studio-200: #1f1f23;
+  --color-studio-300: #2e2e34;
+  --color-studio-400: #6b6b76;
+  --color-studio-500: #8f8f9a;
+  --color-studio-600: #b0b0ba;
+  --color-studio-700: #c9c9d1;
+  --color-studio-800: #dedee4;
+  --color-studio-900: #ececf0;
+  --color-studio-950: #f7f7f8;
+
+  --color-accent: #2dd4bf;
+  --color-accent-hover: #14b8a6;
+  --color-accent-muted: #0f2f2a;
+
+  --color-surface: #141416;
+  --color-surface-elevated: #1c1c1f;
+}
+
+@layer base {
+  html {
+    @apply antialiased;
+  }
+
+  body {
+    @apply m-0 min-h-screen bg-studio-50 font-sans text-studio-900 transition-colors duration-200;
+    background-image:
+      radial-gradient(ellipse 80% 50% at 100% -20%, rgba(26, 122, 102, 0.08), transparent),
+      radial-gradient(ellipse 60% 40% at 0% 100%, rgba(82, 122, 112, 0.06), transparent);
+  }
+
+  [data-theme='dark'] body {
+    background-image:
+      radial-gradient(ellipse 70% 45% at 100% -15%, rgba(45, 212, 191, 0.12), transparent),
+      radial-gradient(ellipse 55% 40% at 0% 100%, rgba(24, 24, 27, 0.9), transparent),
+      radial-gradient(ellipse 40% 30% at 50% 50%, rgba(63, 63, 70, 0.25), transparent);
+  }
+
+  #app {
+    @apply min-h-screen;
+  }
+}
+
+/* Black brand PNGs → white on dark shell */
+[data-theme='dark'] .brand-mark {
+  filter: brightness(0) invert(1);
+}
+
+/*
+  Library demos always render in Light so intentional light/dark patterns
+  stay true to their authored look regardless of shell theme.
+*/
+.viewer-preview-canvas[data-theme='light'] {
+  --color-studio-50: #f4f7f6;
+  --color-studio-100: #e4ece9;
+  --color-studio-200: #c8d9d3;
+  --color-studio-300: #9fbbb2;
+  --color-studio-400: #6f978c;
+  --color-studio-500: #527a70;
+  --color-studio-600: #3f6159;
+  --color-studio-700: #354e48;
+  --color-studio-800: #2d403c;
+  --color-studio-900: #283733;
+  --color-studio-950: #141f1c;
+
+  --color-accent: #1a7a66;
+  --color-accent-hover: #156556;
+  --color-accent-muted: #d8efe8;
+
+  --color-surface: #ffffff;
+  --color-surface-elevated: #ffffff;
+
+  color-scheme: light;
+}
+
+/* highlight.js token colors tuned to studio palette */
+.code-panel .hljs {
+  color: #e4ece9;
+  background: transparent;
+}
+
+.code-panel .hljs-comment,
+.code-panel .hljs-quote {
+  color: #6f978c;
+  font-style: italic;
+}
+
+.code-panel .hljs-tag,
+.code-panel .hljs-name,
+.code-panel .hljs-selector-tag {
+  color: #7dd3c0;
+}
+
+.code-panel .hljs-attr,
+.code-panel .hljs-attribute {
+  color: #a8d8cc;
+}
+
+.code-panel .hljs-string,
+.code-panel .hljs-doctag {
+  color: #f0c674;
+}
+
+.code-panel .hljs-keyword,
+.code-panel .hljs-selector-class,
+.code-panel .hljs-selector-id {
+  color: #5ec4ff;
+}
+
+.code-panel .hljs-number,
+.code-panel .hljs-literal {
+  color: #f5a97f;
+}
+
+.code-panel .hljs-built_in,
+.code-panel .hljs-title {
+  color: #8ec8ff;
+}
+
+.code-panel .hljs-punctuation,
+.code-panel .hljs-bullet {
+  color: #9fbbb2;
+}
+
+/* ── Homepage animations ── */
+@keyframes home-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(1.25rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes home-orb-drift-a {
+
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(-12px, 16px) scale(1.08);
+  }
+}
+
+@keyframes home-orb-drift-b {
+
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(18px, -10px) scale(1.05);
+  }
+}
+
+@keyframes home-pulse-dot {
+
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 0 0 rgba(45, 212, 191, 0.5);
+  }
+
+  50% {
+    opacity: 0.85;
+    box-shadow: 0 0 0 6px rgba(45, 212, 191, 0);
+  }
+}
+
+@keyframes home-marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.home-fade-up {
+  animation: home-fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: var(--home-delay, 0ms);
+}
+
+.home-orb-a {
+  animation: home-orb-drift-a 9s ease-in-out infinite;
+}
+
+.home-orb-b {
+  animation: home-orb-drift-b 11s ease-in-out infinite;
+}
+
+.home-pulse-dot {
+  animation: home-pulse-dot 2s ease-in-out infinite;
+}
+
+.home-marquee-track {
+  animation: home-marquee 120s linear infinite;
+}
+
+.home-marquee-mask {
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.home-bento-card {
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .home-fade-up,
+  .home-orb-a,
+  .home-orb-b,
+  .home-pulse-dot,
+  .home-marquee-track {
+    animation: none;
+  }
+
+  .home-bento-card {
+    transition: none;
+  }
+}
